@@ -1,0 +1,347 @@
+:root {
+  --ink: #1b2540;
+  --ink-light: #2a3557;
+  --paper: #fbf8f2;
+  --paper-dim: #efe9db;
+  --mustard: #e3a83b;
+  --mustard-dark: #c8901f;
+  --teal: #3f8f7c;
+  --coral: #d96b5b;
+  --text-on-ink: #f3efe4;
+  --text-muted: #b8bfd6;
+  --radius: 10px;
+  --shadow: 0 6px 20px rgba(15, 20, 40, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text-on-ink);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 600;
+  margin: 0;
+}
+
+.app-shell {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 18px 64px;
+}
+
+.app-header {
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.app-subtitle {
+  color: var(--text-muted);
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+}
+
+/* ---- Prompt input ---- */
+
+.prompt-form {
+  background: var(--ink-light);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prompt-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.prompt-textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 90px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--ink);
+  color: var(--text-on-ink);
+  padding: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.prompt-textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+.prompt-submit {
+  align-self: flex-start;
+  background: var(--mustard);
+  color: var(--ink);
+  border: none;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.prompt-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.prompt-submit:hover:not(:disabled) {
+  background: var(--mustard-dark);
+}
+
+/* ---- States ---- */
+
+.app-main {
+  margin-top: 28px;
+}
+
+.state-panel {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--text-muted);
+}
+
+.state-panel--error {
+  color: var(--text-on-ink);
+}
+
+.state-title {
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.state-detail {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 16px;
+}
+
+.retry-button {
+  background: transparent;
+  border: 1px solid var(--coral);
+  color: var(--coral);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--mustard);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Result header / mode toggle ---- */
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.mode-toggle {
+  display: flex;
+  gap: 6px;
+  background: var(--ink-light);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mode-btn--active {
+  background: var(--mustard);
+  color: var(--ink);
+}
+
+/* ---- Flashcard deck ---- */
+
+.deck-progress {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0 0 10px;
+}
+
+.flashcard {
+  width: 100%;
+  min-height: 200px;
+  background: var(--paper);
+  color: var(--ink);
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.flashcard--flipped {
+  background: var(--paper-dim);
+}
+
+.flashcard-eyebrow {
+  font-size: 0.75rem;
+  color: var(--mustard-dark);
+  font-weight: 700;
+}
+
+.flashcard-text {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.flashcard-hint {
+  font-size: 0.75rem;
+  color: #8b8574;
+}
+
+.deck-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.deck-nav button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--ink-light);
+  color: var(--text-on-ink);
+  cursor: pointer;
+}
+
+.deck-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---- Quiz ---- */
+
+.quiz-card {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 20px;
+  text-align: center;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.quiz-answer {
+  color: var(--teal);
+  font-weight: 600;
+  border-top: 1px dashed #c9c2ac;
+  padding-top: 12px;
+  width: 100%;
+}
+
+.quiz .prompt-submit {
+  margin-top: 14px;
+}
+
+.quiz-grade-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.quiz-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quiz-btn--right {
+  background: var(--teal);
+  color: var(--ink);
+}
+
+.quiz-btn--wrong {
+  background: var(--coral);
+  color: var(--ink);
+}
+
+.quiz--summary {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.quiz--summary .prompt-submit {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.quiz--summary .retry-button {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ---- Mobile ---- */
+
+@media (max-width: 420px) {
+  .flashcard-text {
+    font-size: 1.05rem;
+  }
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+}
