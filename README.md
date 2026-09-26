@@ -55,7 +55,7 @@ Requires Node 18+.
 cd server
 npm install
 cp .env.example .env
-# edit .env and paste your ANTHROPIC_API_KEY
+# edit .env and set GEMINI_API_KEY
 npm start
 ```
 
@@ -71,6 +71,15 @@ npm start
 Opens at `http://localhost:5173`. Vite proxies `/api/*` to the backend
 (see `vite.config.js`), so the frontend never needs to know the backend's
 real URL or hold any key.
+
+### Deploy to Render
+
+This repository includes a `render.yaml` Blueprint that deploys the frontend
+and API as one Node web service. In Render, choose **New +** → **Blueprint**
+and select this GitHub repository. During setup, enter a valid `GEMINI_API_KEY`
+when prompted. Render builds the Vite frontend, serves it from Express, and
+uses the same origin for `/api/generate`. The key stays in Render's environment
+and is not part of the repository.
 
 ### Using a different provider
 
