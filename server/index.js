@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 8787;
 const API_KEY = process.env.GEMINI_API_KEY;
 const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 const frontendDist = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../dist");
@@ -126,6 +125,7 @@ app.get("*", (req, res, next) => {
   res.sendFile(path.join(frontendDist, "index.html"));
 });
 
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 8787;
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Backend proxy listening on http://localhost:${PORT}`);
 });
